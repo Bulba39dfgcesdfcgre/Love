@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAY! ❤️</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+        }
+        h1 {
+            font-size: 50px;
+            margin-top: 50px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .message {
+            font-size: 25px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .emoji {
+            font-size: 50px;
+            margin-top: 20px;
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .hearts {
+            font-size: 30px;
+            animation: floatUp 3s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+    <script>
+        function showHearts() {
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("hearts");
+                heart.innerHTML = "❤️";
+                heart.style.position = "absolute";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 2 + 2 + "s";
+                document.body.appendChild(heart);
+
+                setTimeout(() => { heart.remove(); }, 3000);
+            }
+        }
+        window.onload = showHearts;
+    </script>
+</head>
+<body>
+    <h1>YAY! 🎉</h1>
+    <p class="message">I knew you'd say YES! ❤️ Get ready for the best Valentine's date ever!</p>
+    <div class="emoji">💖💃🕺</div>
+</body>
+</html>

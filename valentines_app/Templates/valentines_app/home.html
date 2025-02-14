@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? 💖</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 40px;
+            margin-top: 50px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .buttons {
+            margin-top: 30px;
+            position: relative;
+        }
+        button {
+            font-size: 20px;
+            padding: 15px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+        #yes {
+            background-color: #ff4081;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.5);
+        }
+        #yes:hover {
+            transform: scale(1.1);
+        }
+        #no {
+            background-color: #ff6666;
+            color: white;
+            font-size: 24px;
+            position: absolute;
+            left: 50%;
+            box-shadow: 0 5px 15px rgba(255, 102, 102, 0.5);
+        }
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: floatUp 3s linear infinite;
+            opacity: 0.7;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+    <script>
+        function moveButton() {
+            let x = Math.random() * (window.innerWidth - 150);
+            let y = Math.random() * (window.innerHeight - 150);
+            document.getElementById("no").style.left = `${x}px`;
+            document.getElementById("no").style.top = `${y}px`;
+        }
+
+        function showHearts() {
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 2 + 2 + "s";
+                document.body.appendChild(heart);
+
+                setTimeout(() => { heart.remove(); }, 3000);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Will you be my Valentine? 💖</h1>
+    <div class="buttons">
+        <a href="{% url 'success' %}"><button id="yes" onclick="showHearts()">YES</button></a>
+        <button id="no" onmouseover="moveButton()">NO</button>
+    </div>
+</body>
+</html>
